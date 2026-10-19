@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LA NOCHE DE HONOR '26 – Countdown</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{width:100%;height:100%;background:#000;overflow:hidden}
+  body{display:flex;align-items:center;justify-content:center;font-family:Georgia,"Times New Roman",serif}
+  .wrap{width:min(100vw,calc(100dvh * 9 / 16));aspect-ratio:9/16;container-type:inline-size}
+  .flyer{position:relative;width:100%;height:100%;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;
+    background:
+      radial-gradient(ellipse 22% 36% at 50% 0%,rgba(255,238,175,.95) 0%,rgba(255,200,80,.45) 45%,transparent 100%),
+      radial-gradient(ellipse 70% 22% at 50% 100%,rgba(255,190,60,.35) 0%,transparent 100%),
+      radial-gradient(circle at 12% 22%,rgba(255,200,80,.35) 0 2%,transparent 3%),
+      radial-gradient(circle at 90% 16%,rgba(255,215,120,.4) 0 2.5%,transparent 3.5%),
+      radial-gradient(circle at 18% 56%,rgba(255,200,80,.3) 0 2%,transparent 3%),
+      radial-gradient(circle at 86% 50%,rgba(255,215,120,.35) 0 2.4%,transparent 3.4%),
+      radial-gradient(circle at 70% 80%,rgba(255,230,150,.3) 0 1.8%,transparent 2.8%),
+      radial-gradient(circle at 10% 86%,rgba(255,200,80,.3) 0 2.2%,transparent 3.2%),
+      radial-gradient(ellipse at 50% 35%,#3a2808 0%,#17100a 55%,#070503 100%);
+    box-shadow:inset 0 0 0 2cqw #0a0704,inset 0 0 0 2.5cqw #d9a93a}
+  .flyer::before{content:"";position:absolute;inset:0;background:conic-gradient(from 180deg at 50% -3%,transparent 0 41%,rgba(255,215,120,.17) 46%,transparent 50%,rgba(255,215,120,.17) 54%,transparent 59% 100%)}
+  .star{position:absolute;pointer-events:none;color:#fff0b8;line-height:1;text-shadow:0 0 1.6cqw #ffc94d,0 0 3cqw #ffb52e;animation:tw var(--d) ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.2;transform:scale(.45) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(25deg)}}
+  .brand{position:absolute;top:8cqw;left:8cqw;font:700 2.8cqw/1.5 Arial,sans-serif;letter-spacing:.14em;color:#f5d77a;text-transform:uppercase}
+  .title{position:absolute;top:8cqw;right:8cqw;text-align:right;color:#f5d77a;font:700 6.4cqw/1.05 Georgia,serif;letter-spacing:.04em;text-shadow:0 0 3cqw rgba(255,190,60,.5)}
+  .title small{display:block;font:700 2.6cqw Arial,sans-serif;letter-spacing:.3em;margin-bottom:1.6cqw;color:#fff4d0}
+  .big{position:absolute;left:50%;top:16%;transform:translateX(-50%);font:700 88cqw/1 Arial,sans-serif;
+    background:linear-gradient(180deg,#fff6c9 0%,#f0c04a 45%,#b8862b 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 5cqw rgba(255,190,60,.55))}
+  .days{position:absolute;left:0;right:0;top:49%;text-align:center;color:#ffe9a8;font:700 6cqw Arial,sans-serif;letter-spacing:.35em;text-shadow:0 0 2cqw rgba(255,190,60,.6)}
+  .hint{position:absolute;top:44.5%;left:0;right:0;text-align:center;color:rgba(255,233,168,.85);font:700 2.8cqw Arial,sans-serif;letter-spacing:.3em;text-transform:uppercase;animation:pulse 1.8s infinite;pointer-events:none}
+  @keyframes pulse{50%{opacity:.25}}
+  .timer{position:absolute;left:8cqw;right:8cqw;top:53.2%;display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw}
+  .timer div{text-align:center;padding:1.6cqw 0 1.4cqw;border:1px solid rgba(235,185,70,.8);border-radius:2cqw;background:linear-gradient(180deg,rgba(255,215,120,.18),rgba(20,13,4,.7));box-shadow:0 0 3cqw rgba(255,190,60,.25)}
+  .timer b{display:block;font:700 9cqw/1 Arial,sans-serif;font-variant-numeric:tabular-nums;color:#ffeaa6;text-shadow:0 0 2.5cqw rgba(255,190,60,.7)}
+  .timer i{display:block;margin-top:.8cqw;font:700 2.2cqw Arial,sans-serif;font-style:normal;letter-spacing:.2em;color:#e6c068}
+  .month{position:absolute;left:8cqw;top:61.6%;color:#e6c068;font:700 3.6cqw Arial,sans-serif;letter-spacing:.1em}
+  .cal{position:absolute;left:8cqw;right:8cqw;top:65.4%;display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid rgba(235,185,70,.7);background:rgba(20,13,4,.6)}
+  .cal>div{text-align:center;border-right:1px solid rgba(235,185,70,.7)}
+  .cal>div:last-child{border-right:0}
+  .d{padding:4cqw 0;font:700 2.7cqw Arial,sans-serif;letter-spacing:.03em;color:#e6c068;border-bottom:1px solid rgba(235,185,70,.7)}
+  .n{padding:3.5cqw 0 4.5cqw;font:700 12cqw/1 Arial,sans-serif;color:#f3dfa6}
+  .cal .on{background:linear-gradient(180deg,#ffe38a,#e0a92f 60%,#b8862b);position:relative;box-shadow:0 0 5cqw rgba(255,200,70,.7)}
+  .on .d,.on .n{color:#2a1a04}
+  .pin{position:absolute;left:50%;top:-5.5cqw;transform:translateX(-50%) rotate(-12deg);font-size:8cqw;filter:drop-shadow(0 .6cqw .6cqw rgba(0,0,0,.4))}
+  .save{position:absolute;left:0;right:0;bottom:7%;text-align:center;color:#f8e3a0;font:400 10.5cqw/1 Georgia,serif;letter-spacing:.03em;text-shadow:0 0 3cqw rgba(255,190,60,.55)}
+  .save span{font-size:6.5cqw;padding:0 1.4cqw;letter-spacing:.1em}
+  .mega{position:absolute;bottom:3.5cqw;font-size:11cqw}
+  .mega.l{left:6cqw;transform:rotate(-8deg)}
+  .mega.r{right:6cqw;transform:scaleX(-1) rotate(-8deg)}
+  .shoot{position:absolute;left:var(--x);bottom:-2%;width:var(--l);height:.4cqw;border-radius:1cqw;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(255,225,140,.85) 70%,#fff);box-shadow:0 0 1.2cqw 0 rgba(255,210,100,.9);
+    opacity:0;animation:shoot var(--t) ease-out forwards}
+  @keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(var(--a))}12%{opacity:1}80%{opacity:.9}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--a))}}
+  .pop{position:absolute;pointer-events:none;line-height:1;will-change:transform,opacity;animation:burst var(--t) cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes burst{
+    0%{transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:0}
+    12%{opacity:1}
+    55%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.15) rotate(var(--r));opacity:1}
+    100%{transform:translate(calc(-50% + var(--x) * 1.25),calc(-50% + var(--y) + 30cqw)) scale(.8) rotate(calc(var(--r) * 1.6));opacity:0}}
+  .cong{position:absolute;pointer-events:none;color:#fff;font:700 8cqw Georgia,serif;white-space:nowrap;text-shadow:0 0 3cqw #ffc94d,0 .6cqw 1.5cqw rgba(0,0,0,.5);animation:rise 1.4s ease-out forwards}
+  @keyframes rise{0%{transform:translate(-50%,0) scale(.6);opacity:0}20%{opacity:1;transform:translate(-50%,-6cqw) scale(1)}100%{transform:translate(-50%,-24cqw) scale(1);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="flyer" id="flyer" role="button" aria-label="Tap to celebrate">
+    <div class="brand">UCC CoDE<br>Dinner &amp; Awards Night</div>
+    <div class="title"><small>CoDE PRESENTS</small>LA NOCHE<br>DE HONOR '26</div>
+    <div class="big" id="big">3</div>
+    <div class="hint">Tap to celebrate</div>
+    <div class="days" id="lbl">DAYS TO GO!</div>
+    <div class="timer" id="timer">
+      <div><b id="td">03</b><i>DAYS</i></div><div><b id="th">00</b><i>HRS</i></div><div><b id="tm">00</b><i>MINS</i></div><div><b id="ts">00</b><i>SECS</i></div>
+    </div>
+    <div class="month">OCT 2026</div>
+    <div class="cal">
+      <div><div class="d">MONDAY</div><div class="n">19</div></div>
+      <div><div class="d">TUESDAY</div><div class="n">20</div></div>
+      <div><div class="d">WEDNESDAY</div><div class="n">21</div></div>
+      <div class="on"><span class="pin">📍</span><div class="d">THURSDAY</div><div class="n">22</div></div>
+    </div>
+    <div class="save">SAVE<span>THE</span>DATE</div>
+    <div class="mega l">📣</div><div class="mega r">📣</div>
+  </div>
+</div>
+<script>
+(function(){
+  var flyer=document.getElementById('flyer');
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  // live shining stars
+  var glyphs=['✦','✧','✦','★','✨','✧','·'];
+  for(var i=0;i<46;i++){
+    var t=document.createElement('span');
+    t.className='star';
+    t.textContent=glyphs[i%glyphs.length];
+    t.style.left=rnd(3,95)+'%';
+    t.style.top=rnd(2,96)+'%';
+    t.style.fontSize=rnd(2,6.5)+'cqw';
+    t.style.setProperty('--d',rnd(1.4,3.6)+'s');
+    t.style.animationDelay=(-rnd(0,3.6))+'s';
+    flyer.insertBefore(t,flyer.firstChild);
+  }
+  // live countdown to Thu 22 Oct 2026, 8:00 PM (Ghana time, GMT)
+  var target=Date.parse('2026-10-22T20:00:00Z');
+  function z(n){return (n<10?'0':'')+n}
+  function tick(){
+    var ms=Math.max(0,target-Date.now()),sec=Math.floor(ms/1000);
+    var d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60),s=sec%60;
+    document.getElementById('td').textContent=z(d);
+    document.getElementById('th').textContent=z(h);
+    document.getElementById('tm').textContent=z(m);
+    document.getElementById('ts').textContent=z(s);
+    document.getElementById('big').textContent=d;
+    document.getElementById('lbl').textContent=ms===0?"IT'S DINNER TIME! 🥂":(d===1?'DAY TO GO!':(d===0?'TONIGHT!':'DAYS TO GO!'));
+  }
+  tick();setInterval(tick,1000);
+  // tiny shooting stars rising from the bottom
+  function shoot(){
+    var e=document.createElement('span');e.className='shoot';
+    var a=rnd(-118,-62),r=a*Math.PI/180,dist=rnd(80,160);
+    e.style.setProperty('--x',rnd(2,96)+'%');
+    e.style.setProperty('--l',rnd(5,10)+'cqw');
+    e.style.setProperty('--a',a+'deg');
+    e.style.setProperty('--dx',(Math.cos(r)*dist)+'cqw');
+    e.style.setProperty('--dy',(Math.sin(r)*dist)+'cqw');
+    e.style.setProperty('--t',rnd(1.1,2.1)+'s');
+    flyer.insertBefore(e,flyer.firstChild);
+    setTimeout(function(){e.remove()},2300);
+  }
+  (function loop(){shoot();if(Math.random()<.4)shoot();setTimeout(loop,rnd(350,900))})();
+  // tap celebration
+  var emojis=['🍽️','🥂','🍷','🍹','🍾','🥳','🎉','👏','🏆','✨','🍸','🎊','🥂','🍽️'];
+  var words=['Congratulations! 🥂','Congrats! 🍾','Cheers! 🍷','Bon appétit! 🍽️','Well done! 👏'];
+  flyer.addEventListener('pointerdown',function(e){
+    var box=flyer.getBoundingClientRect(),w=box.width;
+    var px=e.clientX-box.left,py=e.clientY-box.top;
+    var hint=flyer.querySelector('.hint'); if(hint) hint.remove();
+    for(var i=0;i<18;i++){
+      var s=document.createElement('span');
+      s.className='pop';
+      s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+      var ang=rnd(-Math.PI,0.15*Math.PI), d=rnd(.15,.5)*w;
+      s.style.left=px+'px'; s.style.top=py+'px';
+      s.style.fontSize=rnd(8,15)+'cqw';
+      s.style.setProperty('--x',(Math.cos(ang)*d)+'px');
+      s.style.setProperty('--y',(Math.sin(ang)*d*1.3-w*.1)+'px');
+      s.style.setProperty('--r',rnd(-50,50)+'deg');
+      s.style.setProperty('--t',rnd(1.1,1.8)+'s');
+      flyer.appendChild(s);
+      setTimeout(function(el){el.remove()},2000,s);
+    }
+    var c=document.createElement('div');
+    c.className='cong';
+    c.textContent=words[Math.floor(Math.random()*words.length)];
+    c.style.left=Math.min(Math.max(px,w*.3),w*.7)+'px';
+    c.style.top=py+'px';
+    flyer.appendChild(c);
+    setTimeout(function(){c.remove()},1500);
+  });
+})();
+</script>
+</body>
+</html>
